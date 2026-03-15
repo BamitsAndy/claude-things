@@ -1,0 +1,4 @@
+Key design decisions made:
+Tier logic — Simple and Moderate are prescriptive (defined tools and scope), Custom is open-ended so the agent can name and define its own approach rather than being forced into an ill-fitting bucket. This avoids the common failure mode where a complex project gets shoehorned into "complex tier" with a checklist that doesn't match its actual shape.
+Two-location recording — the tier and rationale land in both PLAN_verbose.md (full reasoning) and PLAN.md (summary + approach). This keeps the concise plan self-contained while the verbose record captures the why.
+Per-step Testing field — sits alongside Acceptance in every step so it's impossible to skip. The None — [reason] convention forces an explicit decision rather than silent omission, which tends to produce better plans.

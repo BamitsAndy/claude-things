@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Read",
+    "tier": "simple",
+    "description": "Read a file from the local filesystem."
+  },
+  {
+    "name": "Write",
+    "tier": "simple",
+    "description": "Write a file to the local filesystem."
+  },
+  {
+    "name": "Glob",
+    "tier": "simple",
+    "description": "Find files matching a glob pattern."
+  },
+  {
+    "name": "Grep",
+    "tier": "simple",
+    "description": "Search file contents with a regex pattern."
+  },
+  {
+    "name": "Edit",
+    "tier": "simple",
+    "description": "Perform exact string replacements in files."
+  },
+  {
+    "name": "AskUserQuestion",
+    "tier": "simple",
+    "description": "Ask the user a question and wait for their response."
+  },
+  {
+    "name": "ExitPlanMode",
+    "tier": "simple",
+    "description": "Signal that plan is complete and ready for user approval."
+  },
+  {
+    "name": "TaskCreate",
+    "tier": "simple",
+    "description": "Create a new tracked task."
+  },
+  {
+    "name": "TaskGet",
+    "tier": "simple",
+    "description": "Retrieve full details for a task by ID."
+  },
+  {
+    "name": "TaskList",
+    "tier": "simple",
+    "description": "List all tasks with status."
+  },
+  {
+    "name": "TaskUpdate",
+    "tier": "simple",
+    "description": "Update a task's status or details."
+  },
+  {
+    "name": "TaskStop",
+    "tier": "simple",
+    "description": "Stop a running background task."
+  },
+  {
+    "name": "Bash",
+    "tier": "simple",
+    "description": "Execute shell commands."
+  },
+  {
+    "name": "WebFetch",
+    "tier": "advanced",
+    "description": "Fetch content from a URL and process it with AI."
+  },
+  {
+    "name": "WebSearch",
+    "tier": "advanced",
+    "description": "Search the web and return results."
+  }
+]

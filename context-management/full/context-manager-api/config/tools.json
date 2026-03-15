@@ -1,0 +1,263 @@
+[
+  {
+    "name": "Read",
+    "tier": "simple",
+    "description": "Read a UTF-8 text file from the filesystem.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Absolute path to the file to read."
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Line number to start reading from (1-based)."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of lines to read."
+        }
+      },
+      "required": ["file_path"]
+    }
+  },
+  {
+    "name": "Write",
+    "tier": "simple",
+    "description": "Write (or overwrite) a file with the given text content.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Absolute path to the file to write."
+        },
+        "content": {
+          "type": "string",
+          "description": "Text content to write to the file."
+        }
+      },
+      "required": ["file_path", "content"]
+    }
+  },
+  {
+    "name": "Glob",
+    "tier": "simple",
+    "description": "List files matching a glob pattern, sorted by modification time.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Glob pattern (e.g. '**/*.py')."
+        },
+        "path": {
+          "type": "string",
+          "description": "Directory to search in. Defaults to current directory."
+        }
+      },
+      "required": ["pattern"]
+    }
+  },
+  {
+    "name": "AskUserQuestion",
+    "tier": "simple",
+    "description": "Ask the user a question and wait for their typed response.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "description": "The question to present to the user."
+        },
+        "options": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Optional list of suggested answers to display."
+        }
+      },
+      "required": ["question"]
+    }
+  },
+  {
+    "name": "Bash",
+    "tier": "advanced",
+    "description": "Execute a shell command and return stdout/stderr.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "The shell command to run."
+        },
+        "timeout": {
+          "type": "integer",
+          "description": "Timeout in milliseconds (default 30000)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of what the command does."
+        }
+      },
+      "required": ["command"]
+    }
+  },
+  {
+    "name": "Edit",
+    "tier": "advanced",
+    "description": "Replace an exact string in a file with a new string.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Absolute path to the file to edit."
+        },
+        "old_string": {
+          "type": "string",
+          "description": "The exact text to find and replace."
+        },
+        "new_string": {
+          "type": "string",
+          "description": "The replacement text."
+        },
+        "replace_all": {
+          "type": "boolean",
+          "description": "If true, replace every occurrence instead of just the first."
+        }
+      },
+      "required": ["file_path", "old_string", "new_string"]
+    }
+  },
+  {
+    "name": "Grep",
+    "tier": "advanced",
+    "description": "Search file contents with a regex pattern using ripgrep.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Regular expression to search for."
+        },
+        "path": {
+          "type": "string",
+          "description": "File or directory to search. Defaults to current directory."
+        },
+        "glob": {
+          "type": "string",
+          "description": "Glob pattern to filter files (e.g. '*.py')."
+        },
+        "output_mode": {
+          "type": "string",
+          "enum": ["content", "files_with_matches", "count"],
+          "description": "Output format. Default: files_with_matches."
+        },
+        "case_insensitive": {
+          "type": "boolean",
+          "description": "Case-insensitive search."
+        },
+        "context": {
+          "type": "integer",
+          "description": "Lines of context to show around each match."
+        }
+      },
+      "required": ["pattern"]
+    }
+  },
+  {
+    "name": "TaskCreate",
+    "tier": "advanced",
+    "description": "Create a new tracked task with a subject and description.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "Short imperative title for the task."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of what needs to be done."
+        },
+        "activeForm": {
+          "type": "string",
+          "description": "Present-continuous label shown while the task is in progress."
+        }
+      },
+      "required": ["subject", "description"]
+    }
+  },
+  {
+    "name": "TaskGet",
+    "tier": "advanced",
+    "description": "Retrieve full details for a task by its ID.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "description": "The ID of the task to retrieve."
+        }
+      },
+      "required": ["taskId"]
+    }
+  },
+  {
+    "name": "TaskList",
+    "tier": "advanced",
+    "description": "List all tasks with their status and owner.",
+    "input_schema": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "TaskUpdate",
+    "tier": "advanced",
+    "description": "Update a task's status, subject, description, or owner.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "description": "The ID of the task to update."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "in_progress", "completed", "deleted"],
+          "description": "New status for the task."
+        },
+        "subject": {
+          "type": "string",
+          "description": "Updated task title."
+        },
+        "description": {
+          "type": "string",
+          "description": "Updated task description."
+        },
+        "owner": {
+          "type": "string",
+          "description": "Agent or person responsible for the task."
+        }
+      },
+      "required": ["taskId"]
+    }
+  },
+  {
+    "name": "TaskStop",
+    "tier": "advanced",
+    "description": "Stop a running background task by its ID.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "description": "The ID of the background task to stop."
+        }
+      },
+      "required": ["task_id"]
+    }
+  }
+]
