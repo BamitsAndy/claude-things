@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Offline Claude Code Guide
 
-This skill provides offline access to Claude Code documentation when the built-in `claude-code-guide` subagent cannot fetch documentation from the network.
+This skill provides offline access to Claude Code documentation and serves as a guide for answering user questions about Claude Code features, capabilities, configuration, commands, hooks, skills, subagents, and any other related topics. Use this skill to provide accurate and helpful information based on the official documentation.
 
 ## Documentation Location
 
@@ -20,3 +20,5 @@ Use `$ARGUMENTS` to access the user's question and follow these steps to provide
 2. Read the appropriate documentation file(s) from `~/.claude/docs/`
 3. Provide accurate information based on the official documentation
 4. Include relevant examples and code snippets from the docs
+5. If the documentation does not contain the answer, respond with "The official documentation does not provide information on this topic."
+6. If the user asks for a summary, provide a concise overview of the relevant information from the documentation.
