@@ -1,7 +1,7 @@
 ---
 name: ClaudeGuide
 description: Offline Claude Code documentation guide. Use when the user asks about Claude Code features, capabilities, configuration, commands, hooks, skills, subagents, or any other Claude Code topic.
-disable-model-invocation: true
+# disable-model-invocation: true
 ---
 
 # Offline Claude Code Guide
