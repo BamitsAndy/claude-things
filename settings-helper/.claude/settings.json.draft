@@ -1,0 +1,42 @@
+{
+  "_comment": "Draft from /tool-audit on 2026-03-20. Review TOOL_AUDIT.md, edit this file, then rename to settings.json.",
+  "permissions": {
+    "deny": [
+      "Bash(node *)",
+      "Bash(node)",
+      "Bash(npm *)",
+      "Bash(npm)",
+      "Bash(npx *)",
+      "Bash(npx)",
+      "Bash(bun *)",
+      "Bash(bun)",
+      "Bash(bunx *)",
+      "Bash(bunx)",
+      "Bash(pnpm *)",
+      "Bash(pnpm)",
+      "Bash(yarn *)",
+      "Bash(yarn)",
+      "Bash(deno *)",
+      "Bash(deno)",
+      "Bash(tsx *)",
+      "Bash(tsx)",
+      "Bash(ts-node *)",
+      "Bash(ts-node)",
+      "Bash(tsc *)",
+      "Bash(tsc)",
+      "Bash(vite *)",
+      "Bash(vite)",
+      "Bash(next *)",
+      "Bash(next)",
+      "Bash(nuxt *)",
+      "Bash(nuxt)",
+      "Bash(astro *)",
+      "Bash(astro)",
+      "Bash(wrangler *)",
+      "Bash(wrangler)",
+      "Bash(corepack *)",
+      "Bash(corepack)"
+    ],
+    "allow": []
+  }
+}
